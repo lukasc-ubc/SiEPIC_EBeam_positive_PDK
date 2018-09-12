@@ -12,7 +12,7 @@
 export SRC=$HOME/Documents/GitHub
 export DEST=$HOME/.klayout
 export INTC=$HOME/.config/Lumerical
-export REPO=SiEPIC_EBeam_PDK
+export REPO=SiEPIC_EBeam__Positive_PDK
 
 mkdir $DEST/tech
 ln -s $SRC/$REPO/klayout_dot_config/tech/* $DEST/tech/
@@ -24,7 +24,7 @@ ln -s $SRC/$REPO/Lumerical_EBeam_CML/EBeam-dev $INTC/Custom/
 grep -q -F '[Design%20kits]' $INTC/INTERCONNECT.ini || echo '[Design%20kits]' >> $INTC/INTERCONNECT.ini
 
 grep -q -F '/EBeam' $INTC/INTERCONNECT.ini || sed -i .bak '/Design/a\
-EBeam='$SRC/$REPO'/Lumerical_EBeam_CML/EBeam
+EBeam='$SRC/$REPO'/SiEPIC_EBeam__Positive_PDK/EBeam
 ' $INTC/INTERCONNECT.ini
 
 grep -q -F '/EBeam-dev' $INTC/INTERCONNECT.ini || sed -i .bak '/Design/a\
