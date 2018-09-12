@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <waveguides>
 	<waveguide>
-	  <name>Strip (ZEP) TE 1550</name>
+	  <name>Strip TE 1550</name>
       <radius>3.0</radius>
 	  <bezier>0.20</bezier>
+	  <component>
+	    <layer>WG Path</layer>
+	    <width>0.5</width>
+	    <offset>0</offset>
+	  </component>
 	  <component>
 	    <layer>Si</layer>
 	    <width>1.0</width>
@@ -13,6 +18,26 @@
 	    <layer>Si</layer>
 	    <width>1.0</width>
 	    <offset>-0.75</offset>
+	  </component>
+	</waveguide>	
+	<waveguide>
+	  <name>Strip TE 1310</name>
+      <radius>5.0</radius>
+	  <bezier>0.20</bezier>
+	  <component>
+	    <layer>WG Path</layer>
+	    <width>0.5</width>
+	    <offset>0</offset>
+	  </component>
+	  <component>
+	    <layer>Si</layer>
+	    <width>1.0</width>
+	    <offset>0.675</offset>
+	  </component>
+	  <component>
+	    <layer>Si</layer>
+	    <width>1.0</width>
+	    <offset>-0.675</offset>
 	  </component>
 	</waveguide>	
 </waveguides>

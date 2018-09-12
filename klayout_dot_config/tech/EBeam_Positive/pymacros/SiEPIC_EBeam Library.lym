@@ -17,18 +17,13 @@
  <text># Python script
 
 """
-This file is part of the SiEPIC_EBeam_PDK
+This file is part of the SiEPIC_EBeam_Postive_PDK
 by Lukas Chrostowski (c) 2015-2017
 
-This Python file implements a library called "SiEPIC_EBeam", consisting of mature components that have Layouts and Compact Models for circuit simulations:
- - Fixed GDS cell components: imported from SiEPIC-EBeam.gds
+This Python file implements a library called "SiEPIC_EBeam_Postive", consisting of mature components that have Layouts and Compact Models for circuit simulations:
+ - Fixed GDS cell components: imported from SiEPIC_EBeam_Postive.gds
  - PCells:
-    - ebeam_dc_halfring_straight
-    - ebeam_bragg_te1550: waveguide Bragg grating 
-		- ebeam_taper_te1550: Waveguide Taper
-		- Waveguide_bump
-		- Waveguide_SBend
-		- Waveguide_Bend 
+    - Waveguide
 
 NOTE: after changing the code, the macro needs to be rerun to install the new
 implementation. The macro is also set to "auto run" to install the PCell 
@@ -41,63 +36,8 @@ Crash warning:
 
 Version history:
 
-Lukas Chrostowski           2015/11/05 - 2015/11/10
- - Double-bus ring resonator
- - waveguide bends
- - PCell parameter functions
- - polygon text
- - PCell calling another PCell - TestStruct_DoubleBus_Ring
-
-Lukas Chrostowski           2015/11/14
- - fix for rounding error in "DoubleBus_Ring"
-
-Lukas Chrostowski           2015/11/15
- - fix for Python 3.4: print("xxx")
- 
-Lukas Chrostowski           2015/11/17
- - update "layout_waveguide_rel" to use the calculated points_per_circle(radius)
-
-Lukas Chrostowski           2015/11/xx
- - Waveguide based on bends, straight waveguide.
-
-Lukas Chrostowski           2015/12/3
- - Bragg grating
-
-Lukas Chrostowski           2016/01/17
- - Taper, matching EBeam CML component
- 
-Lukas Chrostowski           2016/01/20
- - (sinusoidal) Bragg grating
- 
-Lukas Chrostowski           2016/05/27
- - SWG_waveguide
- - SWG_to_strip_waveguide
-
-S. Preble                   2016/08/26
- - Double Bus Ring Pin's shifted - text now is in the middle of the pin path
-
-Lukas Chrostowski           2016/11/06
- - waveguide bump, to provide a tiny path length increase
-
-Lukas Chrostowski           2017/02/14
- - renaming "SiEPIC" PCells library to "SiEPIC-EBeam PCells", update for Waveguide_Route
- - code simplifications: Box -&gt; Box
-
-Lukas Chrostowski           2017/03/08
- - S-Bend - Waveguide_SBend
-
-Lukas Chrostowski           2017/03/18
- - ebeam_dc_halfring_straight, with TE/TM support.  Zeqin Lu adding CML for this component. 
- 
-Lukas Chrostowski 2017/12/16
- - compatibility with KLayout 0.25 and SiEPIC-Tools
- 
-todo:
-replace:     
- layout_arc_wg_dbu(self.cell, Layerm1N, x0,y0, r_m1_in, w_m1_in, angle_min_doping, angle_max_doping)
-with:
- self.cell.shapes(Layerm1N).insert(Polygon(arc(w_m1_in, angle_min_doping, angle_max_doping) + [Point(0, 0)]).transformed(t))
-
+Lukas Chrostowski           2018/09
+ - copy from SiEPIC_EBeam_PDK
 
 """
 import math
@@ -133,14 +73,14 @@ class Waveguide(PCellDeclarationHelper):
     from SiEPIC.extend import to_itype
     print("EBeam.Waveguide coerce parameters")
     
-    TECHNOLOGY = get_technology_by_name('EBeam')
+    TECHNOLOGY = get_technology_by_name('EBeam_Positive')
     dbu = self.layout.dbu
     wg_width = to_itype(self.width,dbu)
     for lr in range(0, len(self.layers)):
       layer = self.layout.layer(TECHNOLOGY[self.layers[lr]])
       width = to_itype(self.widths[lr],dbu)
       # check to make sure that the waveguide with parameters are consistent in both places
-      if self.layout.layer(TECHNOLOGY['Waveguide']) == layer:
+      if self.layout.layer(TECHNOLOGY['WG Path']) == layer:
         if width != wg_width:
           self.widths[lr] = self.width
       # check to make sure that the DevRec is bigger than the waveguide width
@@ -166,7 +106,7 @@ class Waveguide(PCellDeclarationHelper):
     
     print("EBeam.Waveguide")
     
-    TECHNOLOGY = get_technology_by_name('EBeam')
+    TECHNOLOGY = get_technology_by_name('EBeam_Positive')
     
     dbu = self.layout.dbu
     wg_width = to_itype(self.width,dbu)
@@ -214,7 +154,7 @@ class Waveguide(PCellDeclarationHelper):
       wg_polygon = Polygon(translate_from_normal(wg_pts, width/2 + (offset if turn &gt; 0 else - offset))+translate_from_normal(wg_pts, -width/2 + (offset if turn &gt; 0 else - offset))[::-1])
       self.cell.shapes(layer).insert(wg_polygon)
       
-      if self.layout.layer(TECHNOLOGY['Waveguide']) == layer:
+      if self.layout.layer(TECHNOLOGY['WG Path']) == layer:
         waveguide_length = wg_polygon.area() / self.width * dbu**2
 
     pts = path.get_points()
