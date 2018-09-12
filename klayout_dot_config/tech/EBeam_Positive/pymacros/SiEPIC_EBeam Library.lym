@@ -299,7 +299,8 @@ class SiEPIC_EBeam_Positive(Library):
     print("Initializing '%s' Library." % library)
   
     import os
-    print(" reading: %s" % os.path.join(os.path.dirname(os.path.realpath(__file__)), "SiEPIC_EBeam_Positive-EBeam.gds"))
+    print(" reading: %s" % os.path.join(os.path.dirname(os.path.realpath(__file__)), "SiEPIC_EBeam_Positive.gds"))
+    self.layout().read(os.path.join(os.path.dirname(os.path.realpath(__file__)), "SiEPIC_EBeam_Positive.gds"))
 #    [self.layout().rename_cell(i, self.layout().cell_name(i).replace('_', ' ')) for i in range(0, self.layout().cells())]
     
     
