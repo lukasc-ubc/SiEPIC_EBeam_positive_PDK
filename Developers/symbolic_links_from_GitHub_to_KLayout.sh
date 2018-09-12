@@ -12,7 +12,7 @@
 export SRC=$HOME/Documents/GitHub
 export DEST=$HOME/.klayout
 export INTC=$HOME/.config/Lumerical
-export REPO=SiEPIC_EBeam__Positive_PDK
+export REPO=SiEPIC_EBeam_positive_PDK
 
 mkdir $DEST/tech
 ln -s $SRC/$REPO/klayout_dot_config/tech/* $DEST/tech/
