@@ -1,0 +1,92 @@
+FDTD Solutions Version 8.20.1661 (Mac 64bit)
+ expires (month/day/year): 9/9/2018
+using config file: /Users/lukasc/.config/Lumerical/FDTD Solutions.ini
+license host: dhcp-128-189-85-63
+current time: Mon Aug 13 13:45:06 2018
+Running on host: dhcp-128-189-85-63.ubcsecure.wireless.ubc.ca
+All processes are communicating and ready to proceed to simulation...
+Running fsp file: /Applications/Lumerical/FDTD Solutions/FDTD Solutions.app/Contents/MacOS/fdtd-engine -t 1 -remote -hide /Users/lukasc/.klayout/tech/EBeam/CDC_SM/FDTD_CDC_unit_cell_band_structure/band_structure_1.fsp
+number of processors is 4
+processors are distributed as: 1x4x1
+Running 3D Simulation
+Starting meshing
+Simulation size in gridpoints: 10 x 44 x 83
+Refined 0 mesh cells (0%)
+Completed meshing!
+Meshing complete in 3.62687 seconds of CPU time
+9344 9344
+Starting meshing
+Simulation size in gridpoints: 10 x 44 x 83
+Refined 0 mesh cells (0%)
+Completed meshing!
+Meshing complete in 2.95278 seconds of CPU time
+11584 11584
+Starting meshing
+Simulation size in gridpoints: 10 x 44 x 83
+Refined 0 mesh cells (0%)
+Completed meshing!
+Meshing complete in 3.15314 seconds of CPU time
+3856 3856
+finished material properties
+Meshing Time: 9.43732 seconds, Init Electrical Material Time: 0.295312 seconds, Init Magnetic Material Time: 0.000404
+Using selected optimization level: 2
+Selecting 3d kernel for splitFieldDirection=0 and optLevel=2
+-----------------------------------------
+Beginning initialization of 3D Simulation
+Starting to add sources to simulation
+Adding 3D Gaussian source propagating in X
+Starting to add boundary conditions to simulation
+Adding 3D Bloch BC
+Adding 3D Bloch BC
+Adding 3D PML BC
+Adding 3D Parallel BC
+Adding 3D PML BC
+Adding 3D PML BC
+Starting to add monitors to Simulation
+Adding analysis monitor
+Adding analysis monitor
+Adding 3D Time monitor
+Adding 3D Time monitor
+Adding 3D Time monitor
+Adding 3D Time monitor
+Adding 3D Time monitor
+Adding 3D Time monitor
+Adding 3D Time monitor
+Adding 3D Time monitor
+Adding 3D Time monitor
+Adding 3D Time monitor
+Adding 3D Time monitor
+Adding 3D Time monitor
+Adding 3D Time monitor
+Adding 3D Time monitor
+Adding 3D Time monitor
+Adding 3D Time monitor
+Adding 3D Time monitor
+Adding 3D Time monitor
+Adding 3D Time monitor
+Adding 3D Time monitor
+Adding 3D Time monitor
+Adding 3D Time monitor
+Adding 3D Time monitor
+Adding 3D Time monitor
+Adding 3D Time monitor
+Adding 3D Time monitor
+Adding 3D Time monitor
+Adding 3D Time monitor
+Adding 3D Time monitor
+Adding 3D Time monitor
+Adding 3D Time monitor
+Adding 3D Time monitor
+Adding 3D Time monitor
+Adding 3D Time monitor
+Adding 3D Time monitor
+Adding 3D Time monitor
+Adding 3D Time monitor
+Adding 3D Time monitor
+Adding 3D Time monitor
+Adding 3D Time monitor
+Finished initialization of 3D Simulation
+-----------------------------------------
+All processes are communicating and ready to proceed to simulation...
+Starting 436485 total iterations
+0% complete. Max time remaining: 1 hr, 57 mins, 30 secs. Auto Shutoff: 1
