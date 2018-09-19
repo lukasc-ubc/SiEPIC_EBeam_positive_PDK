@@ -3619,5 +3619,45 @@ SiEPIC_EBeam_dev()
 
 
 
+if 0:
+
+        import os
+
+        # Import all the GDS files in the gds folder:
+        # including *.gds, and *_gds.txt
+        folder = os.path.join(os.path.dirname(os.path.realpath(__file__)),'../gds_circuitdesign/')
+        for x in os.listdir(folder):
+            if 'gds' in x.lower():
+                print(x)
+                if 'remap' in x.lower():
+                    for layer in ['1001/0','1002/0']:
+                        # Layer remap table from X to Y:
+                        lm = pya.LayerMap()
+                        lm.map("%s  : 1/0 " % layer, 0)
+                        lm.map("68/0  : 68/0 " , 0)  # needed?
+                        lo = pya.LoadLayoutOptions()
+                        lo.layer_map().assign(lm)
+                        
+                        print(' - Import GDS, with remapping: %s' %x)
+                        
+                        # load into a temporary layout
+                        temp = pya.Layout()
+                        temp.read(os.path.join(folder, x),lo)
+                        
+                        # rename top cell
+                        top = temp.top_cell()
+                        print(top)
+                        # ... append "_layer" to cell name
+                        
+                        # copy from temp to library layout
+                        # self.layout()....
+                        
+                else:
+                    print(' - Import GDS: %s' %x)
+                    self.layout().read(os.path.join(folder, x))
+
+
+
+
 </text>
 </klayout-macro>
