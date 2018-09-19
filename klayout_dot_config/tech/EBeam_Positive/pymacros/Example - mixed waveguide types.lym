@@ -71,14 +71,14 @@ def Example_mixed_waveguide_types():
   cell.shapes(LayerSiN).insert(dpath.to_itype(dbu))
   path_to_waveguide(cell = cell, verbose=True, params = 
     {'width': wg_width1, 'adiabatic': True, 'radius': 5.0, 'bezier': 0.2, 
-    'wgs': [{'width': wg_width1, 'layer': 'Si', 'offset': 0.0}]})
+    'wgs': [{'width': wg_width1, 'layer': 'WG Path', 'offset': 0.0}, {'width': wg_width1, 'layer': 'Si', 'offset': -0.7}, {'width': wg_width1, 'layer': 'Si', 'offset': 0.7}]})
     
   # Create paths for waveguides type 2, then convert path to waveguide
   dpath = DPath([DPoint(10,0), DPoint(30,0), DPoint(30, 30),DPoint(10, 30)], 0.5)
   cell.shapes(LayerSiN).insert(dpath.to_itype(dbu))
   path_to_waveguide(cell = cell, verbose=True, params = 
     {'width': wg_width2, 'adiabatic': True, 'radius': 15.0, 'bezier': 0.2, 
-    'wgs': [{'width': wg_width2, 'layer': 'Si', 'offset': 0.0}]})
+    'wgs': [{'width': wg_width2, 'layer': 'WG Path', 'offset': 0.0}, {'width': wg_width2, 'layer': 'Si', 'offset': -0.7}, {'width': wg_width2, 'layer': 'Si', 'offset': 0.7}]})
 
   # finish up, unselect, zoom, show all hierarchy 
   lv.clear_object_selection()
